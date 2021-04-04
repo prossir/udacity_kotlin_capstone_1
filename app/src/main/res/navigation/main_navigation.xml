@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_navigation"
+    app:startDestination="@id/welcomeFragment">
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.welcome.WelcomeFragment"
+        android:label="WelcomeFragment" />
+    <fragment
+        android:id="@+id/instructionsFragment"
+        android:name="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.instructions.view.InstructionsFragment"
+        android:label="InstructionsFragment" />
+    <fragment
+        android:id="@+id/listShoesFragment"
+        android:name="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.list_shoes.view.ListShoesFragment"
+        android:label="ListShoesFragment" >
+        <action
+            android:id="@+id/action_listShoesFragment_to_viewShoeDetailFragment"
+            app:destination="@id/viewShoeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewShoeDetailFragment"
+        android:name="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.view_shoe_detail.view.ViewShoeDetailFragment"
+        android:label="ViewShoeDetailFragment" >
+        <action
+            android:id="@+id/action_viewShoeDetailFragment_to_listShoesFragment2"
+            app:destination="@id/listShoesFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

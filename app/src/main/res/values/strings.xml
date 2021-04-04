@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Shoe Store Inventory Capstone_1</string>
+
+    <string name="error_no_internet_connection_title">Upss!! Internet Error</string>
+    <string name="error_no_internet_connection_description">You are not connected to the internet</string>
+    <string name="error_server_request_error_title">Upss! Server Error</string>
+    <string name="error_server_request_error_description">There was a problem connecting to the services</string>
+    <string name="error_ups">Upss!</string>
+    <string name="error_an_error_occurred">There was an error</string>
+
+    <!-- Login activity -->
+    <string name="til_hint_email">Email</string>
+    <string name="til_hint_password">Password</string>
+    <string name="b_text_login_with_email">Login with email</string>
+    <string name="b_text_create_account">Create account</string>
+
+</resources>
