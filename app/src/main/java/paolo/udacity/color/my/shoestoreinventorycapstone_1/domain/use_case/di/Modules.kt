@@ -6,7 +6,8 @@ import paolo.udacity.color.my.shoestoreinventorycapstone_1.domain.use_case.main.
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.domain.use_case.authentication.AttemptLoginUseCase
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.domain.use_case.authentication.CreateUserUseCase
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.domain.use_case.main.GetUserUseCase
-import paolo.udacity.color.my.shoestoreinventorycapstone_1.domain.use_case.shoe_management.RegisterShoeUseCase
+import paolo.udacity.color.my.shoestoreinventorycapstone_1.domain.use_case.shoe_management.CreateShoeUseCase
+import paolo.udacity.color.my.shoestoreinventorycapstone_1.domain.use_case.shoe_management.GetShoesUseCase
 
 
 internal val authenticationUseCasesModule = module {
@@ -26,6 +27,7 @@ internal val mainUseCasesModule = module {
 
 internal val shoeManagementUseCasesModule = module {
 
-    factory { RegisterShoeUseCase(get()) }
+    factory { CreateShoeUseCase(get()) }
+    factory { GetShoesUseCase(get()) }
 
 }

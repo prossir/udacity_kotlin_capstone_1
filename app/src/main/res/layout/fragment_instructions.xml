@@ -1,8 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_instructions_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Instructions"
+            android:textAlignment="center"
+            android:textColor="@color/design_default_color_primary"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_instructions_description" />
+
+        <TextView
+            android:id="@+id/tv_instructions_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="1. .\n\n2. .\n"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/g_50_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_instructions_title"
+            app:layout_constraintTop_toTopOf="@+id/g_50_vertical" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/b_go_to_instructions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="Go to your list of shoes"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_instructions_description" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/g_50_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.50" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
