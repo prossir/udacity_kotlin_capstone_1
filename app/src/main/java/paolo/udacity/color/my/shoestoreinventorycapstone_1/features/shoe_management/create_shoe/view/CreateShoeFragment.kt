@@ -33,7 +33,7 @@ class CreateShoeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_create_shoe, container, false)
         initObservers()
         initUI()
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 
     private fun initObservers() {

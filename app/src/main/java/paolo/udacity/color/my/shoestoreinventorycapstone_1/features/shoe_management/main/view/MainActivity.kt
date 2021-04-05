@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navigationController = findNavController(R.id.nv_main)
+        val navigationController = findNavController(R.id.f_nav_host)
         return NavigationUI.navigateUp(navigationController, drawerLayout)
     }
 
@@ -49,6 +49,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUI() {
         drawerLayout = binding.drawerLayout
+        val navigationController = findNavController(R.id.f_nav_host)
+        NavigationUI.setupActionBarWithNavController(this, navigationController, drawerLayout)
+        NavigationUI.setupWithNavController(binding.nvMain, navigationController)
+
         viewModel.getUser()
     }
 

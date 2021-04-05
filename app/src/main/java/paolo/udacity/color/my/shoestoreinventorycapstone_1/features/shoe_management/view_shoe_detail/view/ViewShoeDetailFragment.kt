@@ -17,7 +17,7 @@ class ViewShoeDetailFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_view_shoe_detail, container, false)
 
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 
 }

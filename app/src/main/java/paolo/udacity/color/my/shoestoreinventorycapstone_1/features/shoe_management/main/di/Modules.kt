@@ -2,13 +2,13 @@ package paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_manage
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.list_shoes.mapper.MainFailureMapper
+import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.list_shoes.mapper.ListShoesFailureMapper
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.main.view.MainViewModel
 
 
 internal val mainPartModule = module {
 
-    factory { MainFailureMapper() }
+    factory { ListShoesFailureMapper() }
 
     viewModel { MainViewModel(get(), get(), get(), get()) }
 

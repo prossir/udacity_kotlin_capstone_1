@@ -16,7 +16,9 @@ class AuthenticationDataRepository(
     }
 
     override suspend fun createAccount(user: User) {
-        localDataSource.insertUser(localMapper.map(user))
+        val userEntity = localMapper.map(user)
+        userEntity.isLogged = true
+        localDataSource.insertUser(userEntity)
     }
 
     override suspend fun checkIfLoggedIn(): Boolean {

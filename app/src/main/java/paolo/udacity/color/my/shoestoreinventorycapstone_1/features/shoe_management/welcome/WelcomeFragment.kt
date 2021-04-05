@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.R
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.databinding.FragmentWelcomeBinding
 
@@ -16,15 +17,13 @@ class WelcomeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_welcome, container, false)
-
         initUi()
-
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 
     private fun initUi() {
         binding.bGoToInstructions.setOnClickListener {
-
+            view?.findNavController()?.navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
         }
     }
 

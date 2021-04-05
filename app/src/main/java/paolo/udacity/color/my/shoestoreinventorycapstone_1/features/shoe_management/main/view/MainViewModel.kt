@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.domain.use_case.main.GetUserUseCase
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.domain.use_case.main.LogOutUseCase
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.authentication.common.mapper.UserMapper
-import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.list_shoes.mapper.MainFailureMapper
+import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.list_shoes.mapper.ListShoesFailureMapper
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.extensions.safeLaunch
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.extensions.with
 
@@ -18,7 +18,7 @@ class MainViewModel(
     private val getUserUseCase: GetUserUseCase,
     private val logOutUseCase: LogOutUseCase,
     private val userMapper: UserMapper,
-    private val failureMapper: MainFailureMapper,
+    private val failureMapper: ListShoesFailureMapper,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 

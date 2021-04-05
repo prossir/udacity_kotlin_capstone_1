@@ -6,13 +6,16 @@
     android:layout_height="wrap_content"
     android:background="@color/design_default_color_primary">
 
-    <ImageView
-        android:id="@+id/iv_user_image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_margin="20dp"
-        android:contentDescription="User's image (placeholder)"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_user_photo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="The placeholder image of the user"
         android:src="@drawable/ic_person_white"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,11 +28,11 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_user_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_user_photo"
         tools:text="Paolo Rossi Ramayoni" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

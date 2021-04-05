@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="1. .\n\n2. .\n"
+            android:text="1. Click the button below to see your list of registered shoes.\n\n2. Inside you can add more shoes by clicking in the button on the right corner.\n\n3. Enjoy!"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/g_50_vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
             app:layout_constraintTop_toTopOf="@+id/g_50_vertical" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/b_go_to_instructions"
+            android:id="@+id/b_go_to_my_shoe_list"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"

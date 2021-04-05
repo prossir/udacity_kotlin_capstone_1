@@ -3,4 +3,4 @@ package paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_manage
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.presentation.mapper.FailureMapper
 
 
-class MainFailureMapper: FailureMapper()
+class ListShoesFailureMapper: FailureMapper()

@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Welcome! This is my version of the project for the first module of the Android Kotlin Developer Nanodegree. All feedback is welcome. Thank you for polishing my knowledge!"
+            android:text="Welcome! This is my version of the project for the first module of the Android Kotlin Developer Nanodegree. All feedback is welcome. Thank you for help me polish my knowledge!"
             android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/g_50_vertical"
