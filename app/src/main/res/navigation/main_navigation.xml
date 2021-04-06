@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_navigation"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
     app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/splashFragment"
@@ -37,13 +38,13 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_in_right"
-            app:popUpTo="@id/loginFragment"
+            app:popUpTo="@id/main_navigation"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.welcome.view.WelcomeFragment"
-        android:label="Home" >
+        android:label="Welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_instructionsFragment"
             app:destination="@id/instructionsFragment"
@@ -63,7 +64,7 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_in_right"
-            app:popUpTo="@id/instructionsFragment"
+            app:popUpTo="@id/main_navigation"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment

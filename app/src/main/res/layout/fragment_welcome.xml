@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
-            android:onClick="@{_ -> asWelcomeViewModel.goToInstructions()}"
+            android:onClick="@{_ -> asWelcomeViewModel.goToInstructions(true)}"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:text="Go to instructions"

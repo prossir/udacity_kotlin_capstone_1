@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoeStoreInventoryCapstone_1">
 
-        <activity android:name="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view.MainActivity">
+        <activity android:name="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view.MainActivity"
+            android:theme="@style/Theme.ShoeStoreInventoryCapstone_1.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

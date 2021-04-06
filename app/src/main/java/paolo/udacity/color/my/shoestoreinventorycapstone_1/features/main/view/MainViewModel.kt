@@ -79,8 +79,7 @@ class MainViewModel(
                 throw Exception("Your password is invalid.")
             }
 
-            _loginViewState.postValue(LoginViewState.IsLoading(true))
-
+            //_loginViewState.postValue(LoginViewState.IsLoading(true))
             with(dispatcher) { attemptLoginUseCase(userMapper.reverseMap(user)) }
             _loginViewState.postValue(LoginViewState.SuccessOnLoginIn())
         }
@@ -96,8 +95,7 @@ class MainViewModel(
                 throw Exception("Your password is invalid.")
             }
 
-            _loginViewState.postValue(LoginViewState.IsLoading(true))
-
+            //_loginViewState.postValue(LoginViewState.IsLoading(true))
             with(dispatcher) { createUserUseCase(userMapper.reverseMap(user)) }
             _loginViewState.postValue(LoginViewState.SuccessOnCreatingAccount())
         }
@@ -107,11 +105,11 @@ class MainViewModel(
     private val _welcomeViewState = MutableLiveData<WelcomeViewState>()
     val welcomeViewState: LiveData<WelcomeViewState>
         get() = _welcomeViewState
-
-    fun goToInstructions() {
+    var canGoToInstructions = false
+    fun goToInstructions(canAct : Boolean = false) {
+        canGoToInstructions = canAct
         _welcomeViewState.postValue(WelcomeViewState.GoToInstructions())
     }
-
 
     // Instructions related variables
     private val _instructionsViewState = MutableLiveData<InstructionsViewState>()

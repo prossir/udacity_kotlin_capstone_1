@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -15,6 +16,7 @@ import paolo.udacity.color.my.shoestoreinventorycapstone_1.R
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.databinding.ActivityMainBinding
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.authentication.common.model.UserModel
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.authentication.splash.view.SplashFragment
+import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.extensions.hideKeyboard
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.presentation.model.FailureModel
 
 
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     }
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,28 +43,38 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         val navigationController = findNavController(R.id.f_nav_host)
-        return NavigationUI.navigateUp(navigationController, drawerLayout)
+        return NavigationUI.navigateUp(navigationController, appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     private fun initObservers() {
         viewModel.viewState.observe(this, viewStateObserver)
     }
 
+    override fun onStart() {
+        super.onStart()
+        binding.toolbar.navigationIcon = null
+    }
+
     private fun initUI() {
+        setSupportActionBar(binding.toolbar)
         drawerLayout = binding.drawerLayout
         val navigationController = findNavController(R.id.f_nav_host)
         navigationController.addOnDestinationChangedListener { _, destination, _ ->
             when(destination.id) {
-                R.id.splashFragment, R.id.loginFragment -> {
+                R.id.splashFragment, R.id.loginFragment, R.id.welcomeFragment,
+                R.id.instructionsFragment -> {
                     supportActionBar?.hide()
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 }
                 else -> {
                     supportActionBar?.show()
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
                 }
             }
         }
-
-        NavigationUI.setupActionBarWithNavController(this, navigationController, drawerLayout)
+        // Who would have know? One can simply control which drawer items are used through this for the drawer layout
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.listShoesFragment), drawerLayout)
+        NavigationUI.setupActionBarWithNavController(this, navigationController, appBarConfiguration)
         NavigationUI.setupWithNavController(binding.nvMain, navigationController)
     }
 
@@ -77,6 +90,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setErrorInUi(failure: FailureModel) {
+        hideKeyboard()
         Snackbar.make(findViewById(android.R.id.content),
             failure.exactMessage ?: getString(failure.commonMessage), Snackbar.LENGTH_LONG).show()
     }

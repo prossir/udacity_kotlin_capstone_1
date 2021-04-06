@@ -24,11 +24,16 @@ class WelcomeFragment : Fragment() {
     }
     private lateinit var binding: FragmentWelcomeBinding
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_welcome, container, false)
-        initObservers()
         initUi()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initObservers()
     }
 
     private fun initObservers() {
@@ -40,7 +45,13 @@ class WelcomeFragment : Fragment() {
     }
 
     private fun goToInstructions() {
-        view?.findNavController()?.navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
+        if(viewModel.canGoToInstructions) {
+            view?.findNavController()?.navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
+        } else {
+            viewModel.canGoToInstructions = false
+        }
+
+
     }
 
 }
