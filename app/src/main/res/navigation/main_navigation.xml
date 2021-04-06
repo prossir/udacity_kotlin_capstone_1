@@ -23,24 +23,24 @@
         android:name="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.list_shoes.view.ListShoesFragment"
         android:label="My list of shoes" >
         <action
-            android:id="@+id/action_listShoesFragment_to_viewShoeDetailFragment"
-            app:destination="@id/viewShoeDetailFragment" />
-        <action
             android:id="@+id/action_listShoesFragment_to_createShoeFragment"
             app:destination="@id/createShoeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/viewShoeDetailFragment"
-        android:name="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.view_shoe_detail.view.ViewShoeDetailFragment"
-        android:label="ViewShoeDetailFragment" >
-        <action
-            android:id="@+id/action_viewShoeDetailFragment_to_listShoesFragment2"
-            app:destination="@id/listShoesFragment"
-            app:popUpTo="@id/welcomeFragment"
-            app:popUpToInclusive="true" />
+        <argument
+            android:name="shoeWasAdded"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/createShoeFragment"
         android:name="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.create_shoe.view.CreateShoeFragment"
-        android:label="CreateShoeFragment" />
+        android:label="Register shoe" >
+        <action
+            android:id="@+id/action_createShoeFragment_to_listShoesFragment"
+            app:destination="@id/listShoesFragment" >
+            <argument
+                android:name="shoeWasAdded"
+                app:argType="boolean"
+                android:defaultValue="false" />
+        </action>
+    </fragment>
 </navigation>

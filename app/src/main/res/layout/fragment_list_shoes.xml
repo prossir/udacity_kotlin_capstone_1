@@ -28,21 +28,42 @@
 
         </ScrollView>
 
+        <TextView
+            android:id="@+id/tv_empty_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You have not added any shoes!"
+            android:textAlignment="center"
+            android:textColor="@color/design_default_color_primary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add_shoe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:onClick="@{_ -> listShoesViewModel.goToAddShoes()}"
             android:contentDescription="Add shoes to the list of shoes"
+            android:onClick="@{_ -> listShoesViewModel.goToAddShoes()}"
+            android:scaleType="center"
+            android:src="@drawable/ic_add_black"
+            android:theme="@style/Widget.MaterialComponents.FloatingActionButton"
+            app:backgroundTint="@color/design_default_color_primary"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lav_loader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            app:tint="@color/design_default_color_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

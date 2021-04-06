@@ -28,12 +28,16 @@ class CreateShoeViewModel(
     val shoe = ShoeModel(name = "", company = "", size = 0.0, description = "")
 
     fun cancelShoeCreation() {
+        _viewState.postValue(CreateShoeViewState.SuccessOnCancellingShoeCreation())
+    }
+
+    fun createShoe() {
         viewModelScope.safeLaunch(::exceptionHandler) {
             if(shoe.name.isBlank()) {
                 throw Exception("The shoe must have a name.")
             }
 
-            if(shoe.name.length < 40) {
+            if(shoe.name.length > 40) {
                 throw Exception("The shoe name must have less than 40 characters.")
             }
 
@@ -41,7 +45,7 @@ class CreateShoeViewModel(
                 throw Exception("The shoe must have a company that manufactures it.")
             }
 
-            if(shoe.company.length < 40) {
+            if(shoe.company.length > 40) {
                 throw Exception("The company name must have less than 40 characters.")
             }
 
@@ -53,17 +57,13 @@ class CreateShoeViewModel(
                 throw Exception("The shoe must have a description.")
             }
 
-            if(shoe.description.length < 200) {
+            if(shoe.description.length > 200) {
                 throw Exception("The description must have less than 200 characters.")
             }
 
             with(dispatcher) { useCase(shoeMapper.reverseMap(shoe)) }
             _viewState.postValue(CreateShoeViewState.SuccessOnCreatingShoe())
         }
-    }
-
-    fun createShoe() {
-        _viewState.postValue(CreateShoeViewState.SuccessOnCancellingShoeCreation())
     }
 
     private fun exceptionHandler(t: Throwable) {

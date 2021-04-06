@@ -4,7 +4,7 @@ import org.koin.dsl.module
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.authentication.common.mapper.UserMapper
 
 
-internal val commonPartModule = module {
+internal val authCommonPartModule = module {
 
     factory { UserMapper() }
 

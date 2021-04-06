@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.R
@@ -29,7 +30,7 @@ class ListShoesFragment : Fragment() {
         }
     }
     private lateinit var binding : FragmentListShoesBinding
-
+    private val arguments: ListShoesFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_shoes, container, false)
@@ -38,22 +39,37 @@ class ListShoesFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        if(arguments.shoeWasAdded) {
+            viewModel.getShoes()
+        }
+        super.onResume()
+    }
+
     private fun initObservers() {
         viewModel.viewState.observe(viewLifecycleOwner, viewStateObserver)
     }
 
     private fun initUi() {
+        binding.listShoesViewModel = viewModel
         viewModel.getShoes()
     }
 
     private fun setSuccessOnGettingRegisteredShoesOnUi(data: List<ShoeModel>) {
         binding.llShoeListHolder.removeAllViews()
-        for(shoe in data) {
-            val viewToAdd = layoutInflater.inflate(R.layout.row_shoe, binding.llShoeListHolder)
-            viewToAdd.findViewById<TextView>(R.id.tv_shoe_name).text = shoe.name
-            viewToAdd.findViewById<TextView>(R.id.tv_shoe_size).text = shoe.sizeAsString + " in inches"
-            viewToAdd.findViewById<TextView>(R.id.tv_shoe_company).text = shoe.company
-            viewToAdd.findViewById<TextView>(R.id.tv_shoe_description).text = shoe.description
+        if(data.isEmpty()) {
+            binding.tvEmptyList.visibility = View.VISIBLE
+            binding.llShoeListHolder.visibility = View.GONE
+        } else {
+            binding.tvEmptyList.visibility = View.GONE
+            binding.llShoeListHolder.visibility = View.VISIBLE
+            for(shoe in data) {
+                val viewToAdd = layoutInflater.inflate(R.layout.row_shoe, binding.llShoeListHolder)
+                viewToAdd.findViewById<TextView>(R.id.tv_shoe_name).text = shoe.name
+                viewToAdd.findViewById<TextView>(R.id.tv_shoe_size).text = shoe.sizeAsString + " in inches"
+                viewToAdd.findViewById<TextView>(R.id.tv_shoe_company).text = shoe.company
+                viewToAdd.findViewById<TextView>(R.id.tv_shoe_description).text = shoe.description
+            }
         }
     }
 
