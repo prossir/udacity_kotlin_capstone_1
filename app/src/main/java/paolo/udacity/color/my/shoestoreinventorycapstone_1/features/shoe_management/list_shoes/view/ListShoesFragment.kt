@@ -7,25 +7,23 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.google.android.material.snackbar.Snackbar
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.R
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.databinding.FragmentListShoesBinding
+import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view.MainViewModel
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.common.model.ShoeModel
-import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.presentation.model.FailureModel
 
 
 class ListShoesFragment : Fragment() {
 
-    private val viewModel by viewModel<ListShoesViewModel>()
+    private val viewModel by activityViewModels<MainViewModel>()
     private val viewStateObserver = Observer<ListShoesViewState> { state ->
         when(state) {
             is ListShoesViewState.IsLoading -> setLoadingIndicator(state.data)
             is ListShoesViewState.SuccessOnGettingRegisteredShoes -> setSuccessOnGettingRegisteredShoesOnUi(state.data)
-            is ListShoesViewState.Failure -> setErrorInUi(state.failure)
             is ListShoesViewState.GoToAddShoes -> goToAddShoes()
         }
     }
@@ -47,11 +45,11 @@ class ListShoesFragment : Fragment() {
     }
 
     private fun initObservers() {
-        viewModel.viewState.observe(viewLifecycleOwner, viewStateObserver)
+        viewModel.listShoesViewState.observe(viewLifecycleOwner, viewStateObserver)
     }
 
     private fun initUi() {
-        binding.listShoesViewModel = viewModel
+        binding.asListShoesViewModel = viewModel
         viewModel.getShoes()
     }
 
@@ -71,11 +69,6 @@ class ListShoesFragment : Fragment() {
                 viewToAdd.findViewById<TextView>(R.id.tv_shoe_description).text = shoe.description
             }
         }
-    }
-
-    private fun setErrorInUi(failure: FailureModel) {
-        setLoadingIndicator(false)
-        Snackbar.make(requireActivity().findViewById(android.R.id.content), failure.exactMessage ?: getString(failure.commonMessage), Snackbar.LENGTH_LONG).show()
     }
 
     private fun goToAddShoes() {

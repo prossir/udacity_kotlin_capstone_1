@@ -4,23 +4,19 @@
 
     <application
         android:name=".CapstoneApp"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoeStoreInventoryCapstone_1">
 
-        <activity android:name=".features.authentication.splash.view.SplashActivity">
+        <activity android:name="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".features.authentication.login.view.LoginActivity" />
-
-        <activity android:name=".features.shoe_management.main.view.MainActivity" />
 
     </application>
 

@@ -1,4 +1,4 @@
-package paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.main.view
+package paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view
 
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.authentication.common.model.UserModel
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.presentation.model.FailureModel

@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="loginViewModel"
-            type="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.authentication.login.view.LoginViewModel" />
+            name="asLoginViewModel"
+            type="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/til_hint_email"
                 android:inputType="textEmailAddress"
-                android:text="@={loginViewModel.user.email}" />
+                android:text="@={asLoginViewModel.user.email}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +59,7 @@
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:selectAllOnFocus="true"
-                android:text="@={loginViewModel.user.password}" />
+                android:text="@={asLoginViewModel.user.password}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:onClick="@{_ -> loginViewModel.login()}"
+            android:onClick="@{_ -> asLoginViewModel.login()}"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:text="@string/b_text_login_with_email"
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:onClick="@{_ -> loginViewModel.createAccount()}"
+            android:onClick="@{_ -> asLoginViewModel.createAccount()}"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:text="@string/b_text_create_account"

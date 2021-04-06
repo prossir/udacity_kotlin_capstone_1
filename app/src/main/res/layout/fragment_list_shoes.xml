@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="listShoesViewModel"
-            type="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.list_shoes.view.ListShoesViewModel" />
+            name="asListShoesViewModel"
+            type="paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:contentDescription="Add shoes to the list of shoes"
-            android:onClick="@{_ -> listShoesViewModel.goToAddShoes()}"
+            android:onClick="@{_ -> asListShoesViewModel.goToAddShoes()}"
             android:scaleType="center"
             android:src="@drawable/ic_add_black"
             android:theme="@style/Widget.MaterialComponents.FloatingActionButton"

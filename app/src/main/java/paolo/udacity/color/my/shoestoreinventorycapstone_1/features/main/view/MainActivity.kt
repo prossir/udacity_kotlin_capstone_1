@@ -1,4 +1,4 @@
-package paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_management.main.view
+package paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.R
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.databinding.ActivityMainBinding
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.authentication.common.model.UserModel
-import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.authentication.splash.view.SplashActivity
+import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.authentication.splash.view.SplashFragment
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.presentation.model.FailureModel
 
 
@@ -62,13 +62,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setSuccessInLogOutInUi() {
-        val intent = Intent(this, SplashActivity::class.java)
+        val intent = Intent(this, SplashFragment::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 
     private fun setErrorInUi(failure: FailureModel) {
-        Snackbar.make(findViewById(android.R.id.content), getString(failure.commonMessage), Snackbar.LENGTH_LONG).show()
+        Snackbar.make(findViewById(android.R.id.content),
+            failure.exactMessage ?: getString(failure.commonMessage), Snackbar.LENGTH_LONG).show()
     }
 
 }

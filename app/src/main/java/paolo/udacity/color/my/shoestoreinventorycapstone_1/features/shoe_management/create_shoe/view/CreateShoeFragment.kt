@@ -6,25 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
-import com.google.android.material.snackbar.Snackbar
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.R
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.databinding.FragmentCreateShoeBinding
-import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.presentation.model.FailureModel
+import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view.MainViewModel
 
 
 class CreateShoeFragment : Fragment() {
 
-    private val viewModel by viewModel<CreateShoeViewModel>()
+    private val viewModel by activityViewModels<MainViewModel>()
     private val viewStateObserver = Observer<CreateShoeViewState> { state ->
         when(state) {
             is CreateShoeViewState.IsLoading -> setLoadingIndicator(state.data)
             is CreateShoeViewState.SuccessOnCreatingShoe -> setSuccessOnCreatingShoeInUi()
             is CreateShoeViewState.SuccessOnCancellingShoeCreation -> setSuccessOnCancellingShoeCreationInUi()
-            is CreateShoeViewState.Failure -> setErrorInUi(state.failure)
-
         }
     }
     private lateinit var binding : FragmentCreateShoeBinding
@@ -37,11 +34,11 @@ class CreateShoeFragment : Fragment() {
     }
 
     private fun initObservers() {
-        viewModel.viewState.observe(viewLifecycleOwner, viewStateObserver)
+        viewModel.createShoeViewState.observe(viewLifecycleOwner, viewStateObserver)
     }
 
     private fun initUI() {
-        binding.createShoeViewModel = viewModel
+        binding.asCreateShoeViewModel = viewModel
     }
 
     private fun setSuccessOnCreatingShoeInUi() {
@@ -50,11 +47,6 @@ class CreateShoeFragment : Fragment() {
 
     private fun setSuccessOnCancellingShoeCreationInUi() {
         view?.findNavController()?.navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment())
-    }
-
-    private fun setErrorInUi(failure: FailureModel) {
-        setLoadingIndicator(false)
-        Snackbar.make(requireActivity().findViewById(android.R.id.content), failure.exactMessage ?: getString(failure.commonMessage), Snackbar.LENGTH_LONG).show()
     }
 
     private fun setLoadingIndicator(isLoading: Boolean) {
