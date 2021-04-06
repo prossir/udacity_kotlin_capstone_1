@@ -50,10 +50,19 @@ class MainActivity : AppCompatActivity() {
     private fun initUI() {
         drawerLayout = binding.drawerLayout
         val navigationController = findNavController(R.id.f_nav_host)
+        navigationController.addOnDestinationChangedListener { _, destination, _ ->
+            when(destination.id) {
+                R.id.splashFragment, R.id.loginFragment -> {
+                    supportActionBar?.hide()
+                }
+                else -> {
+                    supportActionBar?.show()
+                }
+            }
+        }
+
         NavigationUI.setupActionBarWithNavController(this, navigationController, drawerLayout)
         NavigationUI.setupWithNavController(binding.nvMain, navigationController)
-
-        viewModel.getUser()
     }
 
     private fun setSuccessInGettingUserInUi(data: UserModel) {

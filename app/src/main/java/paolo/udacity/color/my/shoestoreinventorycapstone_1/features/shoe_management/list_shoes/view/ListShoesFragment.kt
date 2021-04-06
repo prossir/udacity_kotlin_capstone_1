@@ -50,6 +50,7 @@ class ListShoesFragment : Fragment() {
 
     private fun initUi() {
         binding.asListShoesViewModel = viewModel
+        viewModel.getUser()
         viewModel.getShoes()
     }
 
