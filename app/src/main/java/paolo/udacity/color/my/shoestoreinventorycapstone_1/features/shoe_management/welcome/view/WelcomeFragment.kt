@@ -47,11 +47,8 @@ class WelcomeFragment : Fragment() {
     private fun goToInstructions() {
         if(viewModel.canGoToInstructions) {
             view?.findNavController()?.navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
-        } else {
             viewModel.canGoToInstructions = false
         }
-
-
     }
 
 }

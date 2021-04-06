@@ -42,11 +42,17 @@ class CreateShoeFragment : Fragment() {
     }
 
     private fun setSuccessOnCreatingShoeInUi() {
-        view?.findNavController()?.navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment(true))
+        if(viewModel.canReturnToShoeListing) {
+            view?.findNavController()?.navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment(true))
+            viewModel.canReturnToShoeListing = false
+        }
     }
 
     private fun setSuccessOnCancellingShoeCreationInUi() {
-        view?.findNavController()?.navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment())
+        if(viewModel.canReturnToShoeListing) {
+            view?.findNavController()?.navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment())
+            viewModel.canReturnToShoeListing = false
+        }
     }
 
     private fun setLoadingIndicator(isLoading: Boolean) {

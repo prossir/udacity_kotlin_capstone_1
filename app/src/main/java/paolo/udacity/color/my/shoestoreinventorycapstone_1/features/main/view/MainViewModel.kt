@@ -124,7 +124,7 @@ class MainViewModel(
     private val _listShoesViewState = MutableLiveData<ListShoesViewState>()
     val listShoesViewState: LiveData<ListShoesViewState>
         get() = _listShoesViewState
-
+    var canGoToShoeCreation: Boolean = false
     lateinit var shoes : List<ShoeModel>
 
     fun getShoes() {
@@ -136,6 +136,7 @@ class MainViewModel(
     }
 
     fun goToAddShoes() {
+        canGoToShoeCreation = true
         _listShoesViewState.postValue(ListShoesViewState.GoToAddShoes())
     }
 
@@ -143,10 +144,11 @@ class MainViewModel(
     private val _createShoeViewState = MutableLiveData<CreateShoeViewState>()
     val createShoeViewState: LiveData<CreateShoeViewState>
         get() = _createShoeViewState
-
+    var canReturnToShoeListing: Boolean = false
     val newShoe = ShoeModel(name = "", company = "", size = 0.0, description = "")
 
     fun cancelShoeCreation() {
+        canReturnToShoeListing = true
         _createShoeViewState.postValue(CreateShoeViewState.SuccessOnCancellingShoeCreation())
     }
 
@@ -181,6 +183,7 @@ class MainViewModel(
             }
 
             with(dispatcher) { createShoeUseCase(shoeMapper.reverseMap(newShoe)) }
+            canReturnToShoeListing = true
             _createShoeViewState.postValue(CreateShoeViewState.SuccessOnCreatingShoe())
         }
     }

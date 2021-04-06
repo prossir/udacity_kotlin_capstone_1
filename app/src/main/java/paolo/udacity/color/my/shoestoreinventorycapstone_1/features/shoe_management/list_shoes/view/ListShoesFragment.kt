@@ -73,7 +73,10 @@ class ListShoesFragment : Fragment() {
     }
 
     private fun goToAddShoes() {
-        view?.findNavController()?.navigate(ListShoesFragmentDirections.actionListShoesFragmentToCreateShoeFragment())
+        if(viewModel.canGoToShoeCreation) {
+            view?.findNavController()?.navigate(ListShoesFragmentDirections.actionListShoesFragmentToCreateShoeFragment())
+            viewModel.canGoToShoeCreation = false
+        }
     }
 
     private fun setLoadingIndicator(isLoading: Boolean) {
