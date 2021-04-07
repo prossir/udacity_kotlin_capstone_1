@@ -82,6 +82,11 @@
             android:name="shoeWasAdded"
             app:argType="boolean"
             android:defaultValue="false" />
+        <action
+            android:id="@+id/action_listShoesFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/listShoesFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/createShoeFragment"

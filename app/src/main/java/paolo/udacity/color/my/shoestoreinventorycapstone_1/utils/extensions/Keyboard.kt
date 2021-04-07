@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 
 
 fun Fragment.hideKeyboard() {
-    view?.let { activity?.hideKeyboard(it) }
+    requireView().let { requireActivity().hideKeyboard(it) }
 }
 
 fun Activity.hideKeyboard() {

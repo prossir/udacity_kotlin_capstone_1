@@ -44,7 +44,7 @@ class InstructionsFragment : Fragment() {
     }
 
     private fun goToShoeList() {
-        view?.findNavController()?.navigate(InstructionsFragmentDirections.actionInstructionsFragmentToListShoesFragment())
+        requireView().findNavController().navigate(InstructionsFragmentDirections.actionInstructionsFragmentToListShoesFragment())
     }
 
 }

@@ -27,6 +27,7 @@ import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.shoe_managem
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.extensions.isValidEmail
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.extensions.safeLaunch
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.extensions.with
+import java.util.concurrent.atomic.AtomicBoolean
 
 
 class MainViewModel(
@@ -60,6 +61,7 @@ class MainViewModel(
     fun isUserLogged() {
         viewModelScope.safeLaunch(::exceptionHandler) {
             val result = with(dispatcher) { isUserLoggedUseCase() }
+            canContinueToNext.set(true)
             _splashViewState.value = SplashViewState.SuccessInGettingUserLogged(result)
         }
     }
@@ -188,10 +190,15 @@ class MainViewModel(
         }
     }
 
+    fun resetShoeData() {
+        newShoe.reset()
+    }
+
     // Main related variables
     private val _viewState = MutableLiveData<MainViewState>()
     val viewState: LiveData<MainViewState>
         get() = _viewState
+    var canContinueToNext: AtomicBoolean = AtomicBoolean(false)
 
     fun getUser() {
         viewModelScope.safeLaunch(::exceptionHandler) {
@@ -203,7 +210,8 @@ class MainViewModel(
     fun logout() {
         viewModelScope.safeLaunch(::exceptionHandler) {
             with(dispatcher) { logOutUseCase() }
-            _viewState.value = MainViewState.SuccessInLogOut()
+            _listShoesViewState.postValue(ListShoesViewState.OnLogoutReady())
+            canContinueToNext.set(true)
         }
     }
 

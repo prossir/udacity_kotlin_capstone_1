@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
         Snackbar.make(requireActivity().findViewById(android.R.id.content),
                 "Welcome back!", Snackbar.LENGTH_LONG).show()
         Handler(Looper.getMainLooper()).postDelayed({
-            view?.findNavController()?.navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+            requireView().findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
         }, 3000)
     }
 
@@ -58,7 +58,7 @@ class LoginFragment : Fragment() {
         Snackbar.make(requireActivity().findViewById(android.R.id.content),
                 "Welcome! We hope you enjoy your visit.", Snackbar.LENGTH_LONG).show()
         Handler(Looper.getMainLooper()).postDelayed({
-            view?.findNavController()?.navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+            requireView().findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
         }, 5000)
     }
 

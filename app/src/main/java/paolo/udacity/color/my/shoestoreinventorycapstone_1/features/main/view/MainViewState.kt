@@ -7,7 +7,6 @@ import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.presentation.mo
 sealed class MainViewState {
 
     data class SuccessInGettingUser(val data: UserModel) : MainViewState()
-    data class SuccessInLogOut(val success: Boolean = true) : MainViewState()
     data class Failure(val failure: FailureModel) : MainViewState()
 
 }

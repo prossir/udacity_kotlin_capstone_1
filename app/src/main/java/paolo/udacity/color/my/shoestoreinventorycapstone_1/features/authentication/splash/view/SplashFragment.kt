@@ -29,8 +29,12 @@ class SplashFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_splash, container, false)
         initObservers()
-        initUI()
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initUI()
     }
 
     private fun initObservers() {
@@ -44,11 +48,11 @@ class SplashFragment : Fragment() {
     private fun setSuccessInGettingUserLoggedInUi(isLoggedIn: Boolean) {
         Handler(Looper.getMainLooper()).postDelayed({
             if(isLoggedIn) {
-                view?.findNavController()?.navigate(SplashFragmentDirections.actionSplashFragmentToWelcomeFragment())
+                requireView().findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToWelcomeFragment())
             } else {
-                view?.findNavController()?.navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+                requireView().findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
             }
-        }, 1000)
+        }, 3000)
     }
 
 }

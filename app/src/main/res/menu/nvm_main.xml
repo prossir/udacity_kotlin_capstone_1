@@ -3,6 +3,7 @@
 
     <item
         android:id="@+id/logoutAction"
-        android:title="Logout" />
+        android:title="Logout"
+        android:onClick="logout"/>
 
 </menu>

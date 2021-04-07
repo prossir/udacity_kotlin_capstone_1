@@ -25,6 +25,7 @@ class ListShoesFragment : Fragment() {
             is ListShoesViewState.IsLoading -> setLoadingIndicator(state.data)
             is ListShoesViewState.SuccessOnGettingRegisteredShoes -> setSuccessOnGettingRegisteredShoesOnUi(state.data)
             is ListShoesViewState.GoToAddShoes -> goToAddShoes()
+            is ListShoesViewState.OnLogoutReady -> setOnLogoutReadyInUi()
         }
     }
     private lateinit var binding : FragmentListShoesBinding
@@ -63,19 +64,26 @@ class ListShoesFragment : Fragment() {
             binding.tvEmptyList.visibility = View.GONE
             binding.llShoeListHolder.visibility = View.VISIBLE
             for(shoe in data) {
-                val viewToAdd = layoutInflater.inflate(R.layout.row_shoe, binding.llShoeListHolder)
+                val viewToAdd = layoutInflater.inflate(R.layout.row_shoe, binding.llShoeListHolder, false)
                 viewToAdd.findViewById<TextView>(R.id.tv_shoe_name).text = shoe.name
                 viewToAdd.findViewById<TextView>(R.id.tv_shoe_size).text = shoe.sizeAsString + " in inches"
                 viewToAdd.findViewById<TextView>(R.id.tv_shoe_company).text = shoe.company
                 viewToAdd.findViewById<TextView>(R.id.tv_shoe_description).text = shoe.description
+                binding.llShoeListHolder.addView(viewToAdd)
             }
         }
     }
 
     private fun goToAddShoes() {
         if(viewModel.canGoToShoeCreation) {
-            view?.findNavController()?.navigate(ListShoesFragmentDirections.actionListShoesFragmentToCreateShoeFragment())
+            requireView().findNavController().navigate(ListShoesFragmentDirections.actionListShoesFragmentToCreateShoeFragment())
             viewModel.canGoToShoeCreation = false
+        }
+    }
+
+    private fun setOnLogoutReadyInUi() {
+        if(viewModel.canContinueToNext.getAndSet(false)) {
+            requireView().findNavController().navigate(ListShoesFragmentDirections.actionListShoesFragmentToLoginFragment())
         }
     }
 

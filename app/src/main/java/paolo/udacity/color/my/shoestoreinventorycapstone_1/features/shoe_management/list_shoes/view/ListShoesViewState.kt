@@ -8,5 +8,5 @@ sealed class ListShoesViewState {
     data class IsLoading(val data: Boolean) : ListShoesViewState()
     data class SuccessOnGettingRegisteredShoes(val data: List<ShoeModel>) : ListShoesViewState()
     data class GoToAddShoes(val data: Boolean = true) : ListShoesViewState()
-
+    data class OnLogoutReady(val data: Boolean = true) : ListShoesViewState()
 }

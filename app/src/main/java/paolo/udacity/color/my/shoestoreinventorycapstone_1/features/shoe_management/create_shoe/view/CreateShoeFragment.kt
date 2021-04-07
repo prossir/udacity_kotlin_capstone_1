@@ -43,14 +43,15 @@ class CreateShoeFragment : Fragment() {
 
     private fun setSuccessOnCreatingShoeInUi() {
         if(viewModel.canReturnToShoeListing) {
-            view?.findNavController()?.navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment(true))
+            requireView().findNavController().navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment(true))
+            viewModel.resetShoeData()
             viewModel.canReturnToShoeListing = false
         }
     }
 
     private fun setSuccessOnCancellingShoeCreationInUi() {
         if(viewModel.canReturnToShoeListing) {
-            view?.findNavController()?.navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment())
+            requireView().findNavController().navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment())
             viewModel.canReturnToShoeListing = false
         }
     }

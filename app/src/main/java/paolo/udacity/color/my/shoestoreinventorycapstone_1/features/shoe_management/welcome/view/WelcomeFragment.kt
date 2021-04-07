@@ -46,7 +46,7 @@ class WelcomeFragment : Fragment() {
 
     private fun goToInstructions() {
         if(viewModel.canGoToInstructions) {
-            view?.findNavController()?.navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
+            requireView().findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
             viewModel.canGoToInstructions = false
         }
     }

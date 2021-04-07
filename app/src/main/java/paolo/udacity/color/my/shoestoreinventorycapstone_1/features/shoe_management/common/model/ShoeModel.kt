@@ -12,4 +12,11 @@ data class ShoeModel(
         get() = "$size"
         set(value) { size = if(value.isBlank()) 0.0 else value.toDouble() }
 
+    fun reset() {
+        name = ""
+        company = ""
+        size = 0.0
+        description = ""
+    }
+
 }

@@ -1,7 +1,7 @@
 package paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -15,7 +15,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.R
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.databinding.ActivityMainBinding
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.authentication.common.model.UserModel
-import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.authentication.splash.view.SplashFragment
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.extensions.hideKeyboard
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.presentation.model.FailureModel
 
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     private val viewStateObserver = Observer<MainViewState> { state ->
         when (state) {
             is MainViewState.SuccessInGettingUser -> setSuccessInGettingUserInUi(state.data)
-            is MainViewState.SuccessInLogOut -> setSuccessInLogOutInUi()
             is MainViewState.Failure -> setErrorInUi(state.failure)
         }
     }
@@ -50,11 +48,6 @@ class MainActivity : AppCompatActivity() {
         viewModel.viewState.observe(this, viewStateObserver)
     }
 
-    override fun onStart() {
-        super.onStart()
-        binding.toolbar.navigationIcon = null
-    }
-
     private fun initUI() {
         setSupportActionBar(binding.toolbar)
         drawerLayout = binding.drawerLayout
@@ -72,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
         // Who would have know? One can simply control which drawer items are used through this for the drawer layout
         appBarConfiguration = AppBarConfiguration(setOf(R.id.listShoesFragment), drawerLayout)
         NavigationUI.setupActionBarWithNavController(this, navigationController, appBarConfiguration)
@@ -83,16 +77,14 @@ class MainActivity : AppCompatActivity() {
         navigationHeaderView.findViewById<TextView>(R.id.tv_user_email).text = data.email
     }
 
-    private fun setSuccessInLogOutInUi() {
-        val intent = Intent(this, SplashFragment::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-    }
-
     private fun setErrorInUi(failure: FailureModel) {
         hideKeyboard()
         Snackbar.make(findViewById(android.R.id.content),
-            failure.exactMessage ?: getString(failure.commonMessage), Snackbar.LENGTH_LONG).show()
+                failure.exactMessage ?: getString(failure.commonMessage), Snackbar.LENGTH_LONG).show()
+    }
+
+    fun logout(item: MenuItem) {
+        viewModel.logout()
     }
 
 }
