@@ -11,6 +11,7 @@
             android:id="@+id/iv_shoe_store_logo"
             android:layout_width="@dimen/d_logo_dimen"
             android:layout_height="@dimen/d_logo_dimen"
+            android:layout_marginBottom="@dimen/d_2_margin"
             android:contentDescription="@string/iv_shoe_store_logo_content_description"
             android:src="@drawable/capstone_1_logo"
             app:layout_constraintBottom_toTopOf="@id/tv_title"
@@ -19,13 +20,10 @@
 
         <TextView
             android:id="@+id/tv_title"
+            style="@style/title_style"
             android:layout_width="@dimen/d_dynamic"
             android:layout_height="wrap_content"
             android:text="@string/tv_title_text"
-            android:textAlignment="center"
-            android:textColor="@color/primary"
-            android:textSize="@dimen/t_title_size"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,12 +44,11 @@
 
         <TextView
             android:id="@+id/tv_sub_sub_title"
+            style="@style/common_style"
             android:layout_width="@dimen/d_dynamic"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/d_1.5_margin"
             android:text="@string/tv_sub_sub_title_text"
-            android:textAlignment="center"
-            android:textSize="@dimen/t_header_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sub_title" />

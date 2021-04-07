@@ -14,24 +14,19 @@
 
         <TextView
             android:id="@+id/tv_welcome_title"
+            style="@style/title_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/d_2_margin"
             android:text="@string/tv_welcome_title_text"
-            android:textAlignment="center"
-            android:textColor="@color/primary"
-            android:textSize="@dimen/t_title_size"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/tv_welcome_description" />
 
         <TextView
             android:id="@+id/tv_welcome_description"
+            style="@style/common_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/d_2_margin"
             android:text="@string/tv_welcome_description_text"
-            android:textAlignment="center"
-            android:textSize="@dimen/t_header_size"
             app:layout_constraintBottom_toBottomOf="@+id/g_50_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,18 +35,12 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/b_go_to_instructions"
+            style="@style/button_positive_style"
             android:layout_width="@dimen/d_dynamic"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/d_2_margin"
-            android:background="@drawable/rounded_primary_background"
-            android:elevation="@dimen/e_default"
-            android:gravity="center"
             android:onClick="@{_ -> asWelcomeViewModel.goToInstructions(true)}"
-            android:paddingTop="@dimen/p_2_padding"
-            android:paddingBottom="@dimen/p_2_padding"
             android:text="@string/b_go_to_instructions_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_welcome_description" />
