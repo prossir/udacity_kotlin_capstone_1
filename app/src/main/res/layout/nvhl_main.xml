@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:contentDescription="The placeholder image of the user"
+        android:contentDescription="@string/iv_user_photo_content_description"
         android:src="@drawable/ic_person_white"
         app:civ_border_color="@color/white"
         app:civ_border_width="2dp"
@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/tv_user_email"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/d_dynamic"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"

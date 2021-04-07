@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Shoe Store Inventory Capstone_1</string>
 
+    <!-- Error control -->
     <string name="error_no_internet_connection_title">Upss!! Internet Error</string>
     <string name="error_no_internet_connection_description">You are not connected to the internet</string>
     <string name="error_server_request_error_title">Upss! Server Error</string>
@@ -8,10 +9,48 @@
     <string name="error_ups">Upss!</string>
     <string name="error_an_error_occurred">There was an error</string>
 
-    <!-- Login activity -->
+    <!-- Splash -->
+    <string name="iv_shoe_store_logo_content_description">The logo of the app</string>
+    <string name="tv_title_text">Doggo Supreme\'s Shoe Store</string>
+    <string name="tv_sub_title_text">Capstone 1</string>
+    <string name="tv_sub_sub_title_text">by Paolo Rossi</string>
+
+    <!-- Login -->
     <string name="til_hint_email">Email</string>
     <string name="til_hint_password">Password</string>
     <string name="b_text_login_with_email">Login with email</string>
     <string name="b_text_create_account">Create account</string>
+
+    <!-- Main -->
+    <!-- Top menu -->
+    <string name="iv_user_photo_content_description">The placeholder image of the user</string>
+    <!-- Menu options -->
+    <string name="item_action_logout_title">Logout</string>
+
+    <!-- Welcome -->
+    <string name="tv_welcome_title_text">Capstone 1 - Shoe Store</string>
+    <string name="tv_welcome_description_text">Welcome! This is my version of the project for the first module of the Android Kotlin Developer Nanodegree. All feedback is welcome. Thank you for help me polish my knowledge!</string>
+    <string name="b_go_to_instructions_text">Go to instructions</string>
+
+    <!-- Instructions -->
+    <string name="tv_instructions_title_text">Instructions</string>
+    <string name="tv_instructions_description_title">1. Click the button below to see your list of registered shoes.\n\n2. Inside you can add more shoes by clicking in the button on the right corner.\n\n3. Enjoy!</string>
+    <string name="b_go_to_my_shoe_list_text">Go to your list of shoes</string>
+
+    <!-- List shoes -->
+    <string name="tv_empty_list_text">You have not added any shoes!</string>
+    <string name="fab_add_shoe_content_description">Add shoes to the list of shoes</string>
+
+    <!-- Shoe detail -->
+    <string name="iv_row_shoe_logo">Placeholder image of the shoe being created.</string>
+
+    <!-- Create Shoe -->
+    <string name="iv_shoe_content_description">Image of the shoe</string>
+    <string name="et_shoe_name_hint">Name</string>
+    <string name="et_shoe_company_hint">Company</string>
+    <string name="et_shoe_size_hint">Size (in inches)</string>
+    <string name="et_shoe_description_hint">Description</string>
+    <string name="b_cancel_shoe_creation_text">Cancel</string>
+    <string name="b_create_shoe_text">Create</string>
 
 </resources>

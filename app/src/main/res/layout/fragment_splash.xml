@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv_shoe_store_logo"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:contentDescription="The logo of the app"
+            android:layout_width="@dimen/d_logo_dimen"
+            android:layout_height="@dimen/d_logo_dimen"
+            android:contentDescription="@string/iv_shoe_store_logo_content_description"
             android:src="@drawable/capstone_1_logo"
             app:layout_constraintBottom_toTopOf="@id/tv_title"
             app:layout_constraintEnd_toEndOf="parent"
@@ -18,12 +19,12 @@
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/d_dynamic"
             android:layout_height="wrap_content"
-            android:text="Doggo Supreme's Shoe Store"
+            android:text="@string/tv_title_text"
             android:textAlignment="center"
             android:textColor="@color/primary"
-            android:textSize="24sp"
+            android:textSize="@dimen/t_title_size"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,12 +33,12 @@
 
         <TextView
             android:id="@+id/tv_sub_title"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/d_dynamic"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Capstone 1"
+            android:layout_marginTop="@dimen/d_1.5_margin"
+            android:text="@string/tv_sub_title_text"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="@dimen/t_sub_title_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,12 +46,12 @@
 
         <TextView
             android:id="@+id/tv_sub_sub_title"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/d_dynamic"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="by Paolo Rossi"
+            android:layout_marginTop="@dimen/d_1.5_margin"
+            android:text="@string/tv_sub_sub_title_text"
             android:textAlignment="center"
-            android:textSize="12sp"
+            android:textSize="@dimen/t_header_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sub_title" />
