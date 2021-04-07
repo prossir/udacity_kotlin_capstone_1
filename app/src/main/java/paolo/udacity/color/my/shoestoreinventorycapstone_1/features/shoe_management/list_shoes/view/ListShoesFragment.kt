@@ -75,9 +75,8 @@ class ListShoesFragment : Fragment() {
     }
 
     private fun goToAddShoes() {
-        if(viewModel.canGoToShoeCreation) {
+        if(viewModel.canGoToShoeCreation.getAndSet(false)) {
             requireView().findNavController().navigate(ListShoesFragmentDirections.actionListShoesFragmentToCreateShoeFragment())
-            viewModel.canGoToShoeCreation = false
         }
     }
 

@@ -15,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.R
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.databinding.FragmentLoginBinding
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view.MainViewModel
+import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.extensions.hideKeyboard
 
 
 class LoginFragment : Fragment() {
@@ -45,6 +46,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun setSuccessOnLoginInInUi() {
+        hideKeyboard()
         setLoadingIndicator(true)
         Snackbar.make(requireActivity().findViewById(android.R.id.content),
                 "Welcome back!", Snackbar.LENGTH_LONG).show()
@@ -54,12 +56,13 @@ class LoginFragment : Fragment() {
     }
 
     private fun setSuccessOnCreatingAccountInUi() {
+        hideKeyboard()
         setLoadingIndicator(true)
         Snackbar.make(requireActivity().findViewById(android.R.id.content),
                 "Welcome! We hope you enjoy your visit.", Snackbar.LENGTH_LONG).show()
         Handler(Looper.getMainLooper()).postDelayed({
             requireView().findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
-        }, 5000)
+        }, 4000)
     }
 
     private fun setLoadingIndicator(isLoading: Boolean) {

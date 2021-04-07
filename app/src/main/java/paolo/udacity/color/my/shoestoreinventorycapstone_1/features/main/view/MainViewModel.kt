@@ -81,7 +81,6 @@ class MainViewModel(
                 throw Exception("Your password is invalid.")
             }
 
-            //_loginViewState.postValue(LoginViewState.IsLoading(true))
             with(dispatcher) { attemptLoginUseCase(userMapper.reverseMap(user)) }
             _loginViewState.postValue(LoginViewState.SuccessOnLoginIn())
         }
@@ -107,9 +106,9 @@ class MainViewModel(
     private val _welcomeViewState = MutableLiveData<WelcomeViewState>()
     val welcomeViewState: LiveData<WelcomeViewState>
         get() = _welcomeViewState
-    var canGoToInstructions = false
+    var canGoToInstructions: AtomicBoolean = AtomicBoolean(false)
     fun goToInstructions(canAct : Boolean = false) {
-        canGoToInstructions = canAct
+        canGoToInstructions.set(canAct)
         _welcomeViewState.postValue(WelcomeViewState.GoToInstructions())
     }
 
@@ -126,7 +125,7 @@ class MainViewModel(
     private val _listShoesViewState = MutableLiveData<ListShoesViewState>()
     val listShoesViewState: LiveData<ListShoesViewState>
         get() = _listShoesViewState
-    var canGoToShoeCreation: Boolean = false
+    var canGoToShoeCreation: AtomicBoolean = AtomicBoolean(false)
     lateinit var shoes : List<ShoeModel>
 
     fun getShoes() {
@@ -138,7 +137,7 @@ class MainViewModel(
     }
 
     fun goToAddShoes() {
-        canGoToShoeCreation = true
+        canGoToShoeCreation.set(true)
         _listShoesViewState.postValue(ListShoesViewState.GoToAddShoes())
     }
 
@@ -146,11 +145,11 @@ class MainViewModel(
     private val _createShoeViewState = MutableLiveData<CreateShoeViewState>()
     val createShoeViewState: LiveData<CreateShoeViewState>
         get() = _createShoeViewState
-    var canReturnToShoeListing: Boolean = false
+    var canReturnToShoeListing: AtomicBoolean = AtomicBoolean(false)
     val newShoe = ShoeModel(name = "", company = "", size = 0.0, description = "")
 
     fun cancelShoeCreation() {
-        canReturnToShoeListing = true
+        canReturnToShoeListing.set(true)
         _createShoeViewState.postValue(CreateShoeViewState.SuccessOnCancellingShoeCreation())
     }
 
@@ -185,7 +184,7 @@ class MainViewModel(
             }
 
             with(dispatcher) { createShoeUseCase(shoeMapper.reverseMap(newShoe)) }
-            canReturnToShoeListing = true
+            canReturnToShoeListing.set(true)
             _createShoeViewState.postValue(CreateShoeViewState.SuccessOnCreatingShoe())
         }
     }

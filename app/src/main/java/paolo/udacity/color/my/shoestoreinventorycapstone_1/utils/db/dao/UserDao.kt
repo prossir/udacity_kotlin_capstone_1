@@ -43,8 +43,8 @@ abstract class UserDao : BaseDao<UserEntity>, KoinComponent {
     @Query("SELECT * FROM UserEntity WHERE is_logged = :isLogged")
     abstract suspend fun findLogged(isLogged: Boolean): UserEntity?
 
-    @Query("UPDATE UserEntity SET is_logged = 1")
-    abstract suspend fun logout()
+    @Query("UPDATE UserEntity SET is_logged = :isLogged")
+    abstract suspend fun logout(isLogged: Boolean = false)
 
     @Query("DELETE FROM UserEntity")
     abstract suspend fun cleanTable()

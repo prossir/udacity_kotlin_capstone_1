@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.R
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.databinding.FragmentCreateShoeBinding
 import paolo.udacity.color.my.shoestoreinventorycapstone_1.features.main.view.MainViewModel
+import paolo.udacity.color.my.shoestoreinventorycapstone_1.utils.extensions.hideKeyboard
 
 
 class CreateShoeFragment : Fragment() {
@@ -42,17 +43,17 @@ class CreateShoeFragment : Fragment() {
     }
 
     private fun setSuccessOnCreatingShoeInUi() {
-        if(viewModel.canReturnToShoeListing) {
-            requireView().findNavController().navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment(true))
-            viewModel.resetShoeData()
-            viewModel.canReturnToShoeListing = false
-        }
+        navigateToShoeList(true)
     }
 
     private fun setSuccessOnCancellingShoeCreationInUi() {
-        if(viewModel.canReturnToShoeListing) {
-            requireView().findNavController().navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment())
-            viewModel.canReturnToShoeListing = false
+        navigateToShoeList(false)
+    }
+
+    private fun navigateToShoeList(wasShoeAdded: Boolean) {
+        if(viewModel.canReturnToShoeListing.getAndSet(false)) {
+            hideKeyboard()
+            requireView().findNavController().navigate(CreateShoeFragmentDirections.actionCreateShoeFragmentToListShoesFragment(wasShoeAdded))
         }
     }
 

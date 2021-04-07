@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = binding.drawerLayout
         val navigationController = findNavController(R.id.f_nav_host)
         navigationController.addOnDestinationChangedListener { _, destination, _ ->
+            // supportActionBar consistency logic
             when(destination.id) {
                 R.id.splashFragment, R.id.loginFragment, R.id.welcomeFragment,
                 R.id.instructionsFragment -> {
@@ -63,6 +64,11 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.show()
                     drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
                 }
+            }
+
+            // shoe reset
+            if(destination.id == R.id.listShoesFragment) {
+                viewModel.resetShoeData()
             }
         }
 
